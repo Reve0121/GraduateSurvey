@@ -3,6 +3,6 @@ const response ={
     data:null,
     status:0
 }
-response.initres = function(res){
+response.initRes = function(res){
    
 }

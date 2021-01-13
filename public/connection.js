@@ -1,11 +1,11 @@
 /**
  * database connection
  */
-const dbConnection = require('./config')
+const dbConfig= require('./config')
 const mongoose = require('mongoose');
-let connUrl = "mongodb://127.0.0.1:27017/graduate_survey"
+
 const conn = mongoose.createConnection(
-    connUrl,
+    dbConfig.db_url,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
