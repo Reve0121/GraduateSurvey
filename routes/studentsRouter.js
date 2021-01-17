@@ -10,20 +10,19 @@ router.get('/', function (req, res, next) {
 
 // 查询所有
 router.get('/all', function (req, res, next) {
-  console.log('api all ', '---------->', req.query);
-  studentModel.find()
+  
+  studentModel.find({}).limit(100)
     .then(result => {
-      console.log(result);
+      
       res.json({ "data": result })
     });
 })
 
 // 查询
 router.get('/find', function (req, res, next) {
-  console.log('api all ', '---------->', req.query);
   studentModel.find({ studentId: req.query.id })
     .then(result => {
-      console.log(result);
+      
       res.json({ "data": result })
     });
 })
