@@ -1,7 +1,6 @@
 
 const conn = require('../public/connection')
-const studentSchema = require('../schemas/students')
+const studentSchema = require('../schemas/studentSchema')
 
-const studentModel = conn.model("students",studentSchema)
+module.exports = conn.model("students", studentSchema)
 
-module.exports = studentModel

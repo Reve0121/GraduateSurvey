@@ -1,5 +1,5 @@
 /**
- * define students data
+ * define students schema
  */
 const mongoose = require('mongoose')
 
@@ -20,5 +20,4 @@ const students = {
     "createDate":Date,
     "updateDate":Date
 }
-const studentSchema =mongoose.Schema(students)
-module.exports = studentSchema
+module.exports = mongoose.Schema(students)

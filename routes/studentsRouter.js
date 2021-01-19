@@ -10,10 +10,8 @@ router.get('/', function (req, res, next) {
 
 // 查询所有
 router.get('/all', function (req, res, next) {
-  
   studentModel.find({}).limit(100)
     .then(result => {
-      
       res.json({ "data": result })
     });
 })
@@ -22,7 +20,6 @@ router.get('/all', function (req, res, next) {
 router.get('/find', function (req, res, next) {
   studentModel.find({ studentId: req.query.id })
     .then(result => {
-      
       res.json({ "data": result })
     });
 })
