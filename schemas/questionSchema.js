@@ -10,8 +10,19 @@ const question = {
     "answerB": String,
     "answerC": String,
     "answerD": String,
-    "required": String,
-    "type": String,
+    "required": {
+        type:Boolean,
+        default:true
+    },
+    "level": {
+        type:Number,
+        default:1
+    },
+    "active":{
+        type:Boolean,
+        default:true
+    },
+    "serialNumber": Number,
     "createDate": Date,
     "updateDate": Date
 }

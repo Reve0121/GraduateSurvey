@@ -16,6 +16,9 @@ router.get('/all', function (req, res, next) {
     });
 })
 
+
+
+
 // 查询
 router.get('/find', function (req, res, next) {
   studentModel.find({ studentId: req.query.id })
