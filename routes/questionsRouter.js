@@ -20,7 +20,7 @@ const ObjectID = require("mongodb").ObjectID;
 //查询
 router.get("/all", function (req, res, next) {
   questionModel
-    .find({ status: 1 })
+    .find({ status: true })
     .sort({ serialNumber: 1 })
     .then((result) => {
       console.log(result);
@@ -45,7 +45,7 @@ router.post("/add", async function (req, res, next) {
   });
   req.body.serialNumber = count + 1;
   req.body.createDate = req.body.updateDate = new Date().toISOString();
-  req.body.status = 1;
+  req.body.status = true;
   console.log(req.body);
   let arr = [req.body];
   questionModel.insertMany(arr, function (error, docs) {
