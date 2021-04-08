@@ -10,7 +10,7 @@ router.get("/", function (req, res, next) {
 
 // 查询所有
 router.post("/all", async function (req, res, next) {
-  let pageCount = (req.body.pageIndex-1) * req.body.pageSize;
+  let pageCount = (req.body.pageIndex - 1) * req.body.pageSize;
   let count = await studentModel.count();
 
   let result = await studentModel
