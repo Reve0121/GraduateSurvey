@@ -1,7 +1,6 @@
 /**
  * define question schema
  */
-const { Double } = require("mongodb");
 const mongoose = require("mongoose");
 
 const question = {
