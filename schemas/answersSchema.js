@@ -22,7 +22,7 @@ const answer = {
       //答案D
       answerD: String,
       //答案
-      answer: String,
+      result: String,
     },
   ],
   //问卷状态 0 未完成 1 未提交 2 已完成
