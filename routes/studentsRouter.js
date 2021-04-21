@@ -10,11 +10,11 @@ router.get("/", function (req, res, next) {
 
 // 查询所有
 router.post("/all", async function (req, res, next) {
-  let pageCount = (req.body.pageIndex-1) * req.body.pageSize;
+  let pageCount = (req.body.pageIndex - 1) * req.body.pageSize;
   let count = await studentModel.countDocuments();
 
   let result = await studentModel
-    .find({exit:true})
+    .find({ exit: true })
     .skip(pageCount)
     .limit(req.body.pageSize);
 
@@ -28,8 +28,8 @@ router.post("/all", async function (req, res, next) {
 
 // 查询
 router.post("/find", function (req, res, next) {
-  studentModel.find({ studentId: req.body.studentId,"exit":true}).then((result) => {
-    console.log("result----->",result);
+  studentModel.find({ studentId: req.body.studentId, "exit": true }).then((result) => {
+    console.log("result----->", result);
     res.json(Res.initSuccessRes({ result: result, message: "查询成功" }));
   });
 
@@ -44,7 +44,7 @@ router.post("/login", function (req, res, next) {
     let data = false,
       message = "登录失败";
 
-    if ( result != null && req.body.password === result.phone) {
+    if (result != null && req.body.password === result.phone) {
       data = true;
       message = "登录成功";
     }
@@ -61,11 +61,11 @@ router.post("/add", async function (req, res, next) {
   req.body.serialNumber = count + 1;
   req.body.createDate = req.body.updateDate = new Date().toISOString();
   req.body.exit = true;
-  console.log("req.body----->",req.body);
+  console.log("req.body----->", req.body);
   let arr = [req.body];
   studentModel.insertMany(arr, function (error, docs) {
     if (!error) {
-      console.log("response",docs);
+      console.log("response", docs);
       res.json(Res.initSuccessRes({ result: docs, message: "添加成功" }));
     }
   });
