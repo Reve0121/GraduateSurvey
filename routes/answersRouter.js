@@ -17,13 +17,13 @@ router.get("/all", function (req, res, next) {
 });
 //查询单个
 router.post("/findOne", async function (req, res, next) {
-    console.log("find---->", req.body);
-    let whereStr = { studentId: req.body.id }; // 查询条件
-    console.log("whereStr----->", whereStr);
-    let resData = await answersModel.find(whereStr);
-    console.log(resData);
-    res.json(Res.initSuccessRes({ result: resData, message: "查询成功" }));
-   });
+  console.log("find---->", req.body);
+  let whereStr = { studentId: req.body.id }; // 查询条件
+  console.log("whereStr----->", whereStr);
+  let resData = await answersModel.find(whereStr);
+  console.log(resData);
+  res.json(Res.initSuccessRes({ result: resData, message: "查询成功" }));
+});
 
 //新增一条记录
 router.post("/add", async function (req, res, next) {
@@ -50,30 +50,30 @@ router.post("/update", async function (req, res, next) {
 });
 //统计各问
 
-router.post("/countA",function (req, res, next) {
+router.post("/countA", function (req, res, next) {
   console.log("countA---->", req.body);
-  let resData = Math.round(Math.random()*150); 
+  let resData = Math.round(Math.random() * 150);
   console.log(resData);
   res.json(Res.initSuccessRes({ result: resData, message: "计数A" }));
 });
 
-router.post("/countB",function (req, res, next) {
+router.post("/countB", function (req, res, next) {
   console.log("countB---->", req.body);
-  let resData = Math.round(Math.random()*100);  
+  let resData = Math.round(Math.random() * 100);
   console.log(resData);
   res.json(Res.initSuccessRes({ result: resData, message: "计数B" }));
 });
 
-router.post("/countC",function (req, res, next) {
+router.post("/countC", function (req, res, next) {
   console.log("countC---->", req.body);
-  let resData = Math.round(Math.random()*80);  
+  let resData = Math.round(Math.random() * 80);
   console.log(resData);
   res.json(Res.initSuccessRes({ result: resData, message: "计数C" }));
 });
 
-router.post("/countD",function (req, res, next) {
+router.post("/countD", function (req, res, next) {
   console.log("countD---->", req.body);
-  let resData = {count:Math.round(Math.random()*30)};
+  let resData = Math.round(Math.random() * 30);
 
   console.log(resData);
   res.json(Res.initSuccessRes({ result: resData, message: "计数D" }));
