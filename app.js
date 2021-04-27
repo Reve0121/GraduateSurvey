@@ -19,7 +19,7 @@ app.all("*", function (req, res, next) {
     "Access-Control-Allow-Headers",
     "Content-Type, Authorization, X-Requested-With"
   );
-  // //跨域允许的请求方式
+  //跨域允许的请求方式
   res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
   // 可以带cookies
   res.header("Access-Control-Allow-Credentials", true);

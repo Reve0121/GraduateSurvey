@@ -23,16 +23,8 @@ router.post("/findOne", async function (req, res, next) {
     let resData = await answersModel.find(whereStr);
     console.log(resData);
     res.json(Res.initSuccessRes({ result: resData, message: "查询成功" }));
-  });7
-//查询单个
-router.post("/find", async function (req, res, next) {
-  console.log("find---->", req.body);
-  let whereStr = { studentId: req.body.id }; // 查询条件
-  console.log("whereStr----->", whereStr);
-  let resData = await answersModel.find(whereStr);
-  console.log(resData);
-  res.json(Res.initSuccessRes({ result: resData, message: "查询成功" }));
-});
+   });
+
 //新增一条记录
 router.post("/add", async function (req, res, next) {
   req.body.createDate = req.body.updateDate = new Date().toISOString();
@@ -55,6 +47,36 @@ router.post("/update", async function (req, res, next) {
   let restemp = await answersModel.updateOne(whereStr, updateStr);
   console.log("restemp", restemp);
   res.json(Res.initSuccessRes({ result: restemp, message: "修改成功" }));
+});
+//统计各问
+
+router.post("/countA",function (req, res, next) {
+  console.log("countA---->", req.body);
+  let resData = Math.round(Math.random()*150); 
+  console.log(resData);
+  res.json(Res.initSuccessRes({ result: resData, message: "计数A" }));
+});
+
+router.post("/countB",function (req, res, next) {
+  console.log("countB---->", req.body);
+  let resData = Math.round(Math.random()*100);  
+  console.log(resData);
+  res.json(Res.initSuccessRes({ result: resData, message: "计数B" }));
+});
+
+router.post("/countC",function (req, res, next) {
+  console.log("countC---->", req.body);
+  let resData = Math.round(Math.random()*80);  
+  console.log(resData);
+  res.json(Res.initSuccessRes({ result: resData, message: "计数C" }));
+});
+
+router.post("/countD",function (req, res, next) {
+  console.log("countD---->", req.body);
+  let resData = {count:Math.round(Math.random()*30)};
+
+  console.log(resData);
+  res.json(Res.initSuccessRes({ result: resData, message: "计数D" }));
 });
 
 module.exports = router;
