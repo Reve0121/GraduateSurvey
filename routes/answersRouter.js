@@ -50,33 +50,113 @@ router.post("/update", async function (req, res, next) {
 });
 //统计各问
 
-router.post("/countA", function (req, res, next) {
+router.post("/countA", async function (req, res, next) {
   console.log("countA---->", req.body);
-  let resData = Math.round(Math.random() * 150);
+  console.log("req.body._id---->", req.body._id, ObjectID(req.body._id));
+  let whereStr = { "survey._id": ObjectID(req.body._id), "survey.result": "answerA" };
+  let resData = await answersModel.aggregate([{ $unwind: "$survey" },
+  { $match: whereStr },
+  {
+    $project: {
+      "survey.result": 1,
+      "survey._id": 1,
+    }
+  },
+  {
+    $group:
+      { _id: null, total: { $sum: 1 } }
+  }]);
   console.log(resData);
-  res.json(Res.initSuccessRes({ result: resData, message: "计数A" }));
+  let response = {
+    id: req.body._id,
+    total: resData[0].total
+  }
+  if (resData && resData.length > 0) {
+    response.total = resData[0].total
+  }
+  res.json(Res.initSuccessRes({ result: response, message: "计数A" }));
 });
 
-router.post("/countB", function (req, res, next) {
+router.post("/countB", async function (req, res, next) {
   console.log("countB---->", req.body);
-  let resData = Math.round(Math.random() * 100);
+  req.body.updateDate = new Date().toISOString();
+  let whereStr = { "survey._id": ObjectID(req.body._id), "survey.result": "answerB" };
+  let resData = await answersModel.aggregate([{ $unwind: "$survey" },
+  { $match: whereStr },
+  {
+    $project: {
+      "survey.result": 1,
+      "survey._id": 1,
+    }
+  },
+  {
+    $group:
+      { _id: null, total: { $sum: 1 } }
+  }]);
   console.log(resData);
-  res.json(Res.initSuccessRes({ result: resData, message: "计数B" }));
+  let response = {
+    id: req.body._id,
+    total: resData[0].total
+  }
+  if (resData && resData.length > 0) {
+    response.total = resData[0].total
+  }
+  res.json(Res.initSuccessRes({ result: response, message: "计数B" }));
 });
 
-router.post("/countC", function (req, res, next) {
+router.post("/countC", async function (req, res, next) {
   console.log("countC---->", req.body);
-  let resData = Math.round(Math.random() * 80);
+  req.body.updateDate = new Date().toISOString();
+  let whereStr = { "survey._id": ObjectID(req.body._id), "survey.result": "answerC" };
+  let resData = await answersModel.aggregate([{ $unwind: "$survey" },
+  { $match: whereStr },
+  {
+    $project: {
+      "survey.result": 1,
+      "survey._id": 1,
+    }
+  },
+  {
+    $group:
+      { _id: null, total: { $sum: 1 } }
+  }]);
   console.log(resData);
-  res.json(Res.initSuccessRes({ result: resData, message: "计数C" }));
+  let response = {
+    id: req.body._id,
+    total: resData[0].total
+  }
+  if (resData && resData.length > 0) {
+    response.total = resData[0].total
+  }
+  res.json(Res.initSuccessRes({ result: response, message: "计数C" }));
 });
 
-router.post("/countD", function (req, res, next) {
-  console.log("countD---->", req.body);
-  let resData = Math.round(Math.random() * 30);
 
+router.post("/countD", async function (req, res, next) {
+  console.log("countD---->", req.body);
+  req.body.updateDate = new Date().toISOString();
+  let whereStr = { "survey._id": ObjectID(req.body._id), "survey.result": "answerC" };
+  let resData = await answersModel.aggregate([{ $unwind: "$survey" },
+  { $match: whereStr },
+  {
+    $project: {
+      "survey.result": 1,
+      "survey._id": 1,
+    }
+  },
+  {
+    $group:
+      { _id: null, total: { $sum: 1 } }
+  }]);
   console.log(resData);
-  res.json(Res.initSuccessRes({ result: resData, message: "计数D" }));
+  let response = {
+    id: req.body._id,
+    total: resData[0].total
+  }
+  if (resData && resData.length > 0) {
+    response.total = resData[0].total
+  }
+  res.json(Res.initSuccessRes({ result: response, message: "计数D" }));
 });
 
 module.exports = router;
